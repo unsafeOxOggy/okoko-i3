@@ -1,0 +1,161 @@
+
+configuration {
+    /* ─── Core Modes & Execution ─────────────────────────────────────────── */
+    modi: "drun,run,window,ssh";
+    terminal: "alacritty";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+
+    /* ─── Typography & Iconography ───────────────────────────────────────── */
+    font: "RobotoMono Nerd Font 11";
+    show-icons: true;
+    icon-theme: "Papirus";
+    drun-display-format: "{icon} {name}";
+
+    /* ─── Display Labels (Nerd Font Glyphs) ──────────────────────────────── */
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: "   Window ";
+    display-ssh: "   SSH ";
+    sidebar-mode: true;
+    
+    /* ─── Keybindings (Vim-style navigation) ─────────────────────────────── */
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-remove-to-eol: "Control+Shift+e";
+    kb-mode-next: "Shift+Right,Control+Tab";
+    kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";
+    kb-remove-char-back: "BackSpace,Shift+BackSpace";
+}
+
+/* ==========================================================================
+   THEME STYLING
+   ========================================================================== */
+
+* {
+    /* Color Palette */
+    bg-base:        #1e1e2e;
+    bg-alt:         #313244;
+    border-col:     #89b4fa;
+    text-main:      #cdd6f4;
+    text-muted:     #7f849c;
+    accent:         #89b4fa;
+    urgent:         #f38ba8;
+
+    /* Global properties */
+    width: 600;
+    background-color: @bg-base;
+    text-color: @text-main;
+    margin: 0px;
+    padding: 0px;
+}
+
+window {
+    border: 2px solid;
+    border-color: @border-col;
+    border-radius: 8px;
+    background-color: @bg-base;
+    padding: 15px;
+    /* Anchor center of screen */
+    anchor: center;
+    x-offset: 0;
+    y-offset: -50;
+}
+
+mainbox {
+    background-color: inherit;
+    children: [inputbar, listview, mode-switcher];
+}
+
+/* ─── Input Area ─────────────────────────────────────────────────────────── */
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-base;
+    border-radius: 6px;
+    margin: 0px 0px 15px 0px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color: @bg-base;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font: "RobotoMono Nerd Font Bold 11";
+}
+
+entry {
+    padding: 8px 15px;
+    margin: 0px 0px 0px 10px;
+    text-color: @text-main;
+    background-color: @bg-alt;
+    border-radius: 6px;
+    placeholder: "Search...";
+    placeholder-color: @text-muted;
+}
+
+/* ─── List Layout ────────────────────────────────────────────────────────── */
+listview {
+    border: 0px;
+    columns: 1;
+    lines: 7;
+    background-color: transparent;
+    spacing: 5px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    padding: 8px;
+    background-color: transparent;
+    text-color: @text-main;
+    border-radius: 6px;
+    spacing: 10px;
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg-base;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @bg-base;
+}
+
+element normal.urgent {
+    text-color: @urgent;
+}
+
+/* ─── Bottom Tabs (Mode Switcher) ────────────────────────────────────────── */
+mode-switcher {
+    spacing: 10px;
+    margin: 15px 0px 0px 0px;
+}
+
+button {
+    padding: 8px;
+    background-color: @bg-alt;
+    text-color: @text-muted;
+    border-radius: 6px;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @accent;
+  text-color: @bg-base;
+}

@@ -1,0 +1,167 @@
+[general]
+live_config_reload = true
+ipc_socket = true
+
+[env]
+TERM = "alacritty"
+
+# ─── Window Metrics & Tiling WM Hooks ─────────────────────────────────────────
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+decorations = "None"
+opacity = 0.99
+startup_mode = "Windowed"
+title = "Alacritty"
+dynamic_title = true
+decorations_theme_variant = "Dark"
+
+[window.class]
+instance = "Alacritty"
+general = "Alacritty"
+
+# ─── Scrollback Buffer ────────────────────────────────────────────────────────
+[scrolling]
+history = 10000
+multiplier = 3
+
+# ─── Typography (RobotoMono Nerd Font Integration) ───────────────────────────
+[font]
+size = 10.5
+builtin_box_drawing = true
+
+[font.normal]
+family = "RobotoMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "RobotoMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "RobotoMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "RobotoMono Nerd Font"
+style = "Bold Italic"
+
+[font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+# ─── Cursor Behavior ──────────────────────────────────────────────────────────
+[cursor]
+unfocused_hollow = true
+thickness = 0.15
+
+[cursor.style]
+shape = "Block"
+blinking = "Off"
+
+# ─── Color Scheme (Catppuccin Mocha Palette) ──────────────────────────────────
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.footer_bar]
+foreground = "#1e1e2e"
+background = "#cdd6f4"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+
+[colors.dim]
+black   = "#313244"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#45475a"
+
+# ─── Regex Hints & URL Parsing ────────────────────────────────────────────────
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+binding = { key = "O", mods = "Control|Shift" }
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+# ─── Keybindings & Vi Mode Controls ──────────────────────────────────────────
+[keyboard]
+bindings = [
+  # Clipboard Integration
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+
+  # Font Dynamic Scaling
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Plus", mods = "Control|Shift", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "Key0", mods = "Control", action = "ResetFontSize" },
+
+  # Window & Modal Controls
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+  { key = "Space", mods = "Control|Shift", action = "ToggleViMode" },
+  { key = "F", mods = "Control|Shift", action = "SearchForward" },
+  { key = "B", mods = "Control|Shift", action = "SearchBackward" },
+
+  # PTY Buffer Navigation
+  { key = "PageUp", mods = "Shift", action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift", action = "ScrollPageDown" },
+  { key = "Home", mods = "Shift", action = "ScrollToTop" },
+  { key = "End", mods = "Shift", action = "ScrollToBottom" }
+]

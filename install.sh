@@ -92,4 +92,24 @@ cp -rf config/okoko/scritps/*            "${HOME}/.config/okoko/scritps/" 2>/dev
 log_info "Recursively granting execution bits to shell scripts..."
 find "${HOME}/.config/okoko/scritps" "${HOME}/.config/okoko/polybar" -type f -name "*.sh" -exec chmod +x {} +
 
+# Optional Oh-My-Zsh Installation
+read -p "Do you want to install Oh-My-Zsh? (y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    log_info "Installing Zsh..."
+    sudo apt-get install -y zsh
+
+    log_info "Installing Oh-My-Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+    # Set Zsh as the default shell
+    if [ -f /usr/bin/zsh ]; then
+        log_info "Setting Zsh as the default shell..."
+        chsh -s "$(which zsh)"
+        log_info "You will need to log out and log back in for the shell change to take effect."
+    fi
+else
+    log_info "Oh-My-Zsh installation skipped"
+fi
+
 log_info "Environment deployment completed successfully."

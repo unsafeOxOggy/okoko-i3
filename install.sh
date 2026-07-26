@@ -37,7 +37,7 @@ sudo apt-get install -y --no-install-recommends \
     i3 \
     polybar \
     picom \
-    alacritty \
+    kitty \
     feh \
     rofi \
     fonts-font-awesome \
@@ -67,7 +67,7 @@ fc-cache -f "$FONT_TARGET_DIR"
 log_info "Constructing configuration directory tree..."
 mkdir -p \
     "${HOME}/.config/i3" \
-    "${HOME}/.config/alacritty" \
+    "${HOME}/.config/kitty" \
     "${HOME}/.config/okoko/polybar" \
     "${HOME}/.config/okoko/picom" \
     "${HOME}/.config/rofi" \
@@ -81,7 +81,7 @@ log_info "Deploying application configuration files..."
 cp -f "config/i3/config"                  "${HOME}/.config/i3/config"
 cp -f "config/rofi/config.rasi"    "${HOME}/.config/rofi/config.rasi"
 cp -f "config/okoko/picom/picom.conf"    "${HOME}/.config/okoko/picom/picom.conf"
-cp -f "config/alacritty/alacritty.toml"  "${HOME}/.config/alacritty/alacritty.toml"
+cp -f "config/kitty/kitty.conf"  "${HOME}/.config/kitty/kitty.conf"
 
 # Directory tree synchronization (preserves nested structure)
 cp -rf config/okoko/polybar/*             "${HOME}/.config/okoko/polybar/" 2>/dev/null || true

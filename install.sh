@@ -44,7 +44,8 @@ sudo apt-get install -y --no-install-recommends \
     flameshot \
     wget \
     tar \
-    fontconfig
+    fontconfig \
+    fastfetch
 
 # ─── Automated Nerd Fonts Deployment ─────────────────────────────────────────
 log_info "Fetching and installing RobotoMono Nerd Font..."

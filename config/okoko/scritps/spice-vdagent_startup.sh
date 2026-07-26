@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Kill any existing instance of the SPICE agent
-pkill spice-vdagent 2> /dev/null
+pkill -x spice-vdagent 2> /dev/null
 
-# Restart the user-space SPICE daemon for clipboard and resolution sync
+while pgrep -x spice-vdagent > /dev/null; do sleep 0.1; done
+
 spice-vdagent
